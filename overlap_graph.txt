@@ -1,0 +1,15 @@
+import itertools
+
+with open("input.txt", "r") as file:
+	sequences = file.readlines()
+	sequences = [x.strip() for x in sequences]
+
+permutations = itertools.permutations(sequences, 2)
+permutations = sorted(permutations)
+output = open("output.txt", "w")
+for permutation in permutations:
+	if permutation[0][1:] == permutation[1][:-1]:
+		output.write(permutation[0])
+		output.write(' -> ')
+		output.write(permutation[1])
+		output.write('\n')
